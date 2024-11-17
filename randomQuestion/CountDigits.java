@@ -1,20 +1,16 @@
 package randomQuestion;
+
+
 public class CountDigits {
     public static int countDigits(int num) {
-        int count = 0;
-        // Handle negative numbers
-        num = Math.abs(num);
-
-        do {
-            count++;
-            num /= 10;
-        } while (num != 0);
-
-        return count;
+        // Handle the edge case for zero
+        if (num == 0) return 1;
+        // Use the logarithmic formula
+        return (int) Math.floor(Math.log10(Math.abs(num))) + 1;
     }
 
     public static void main(String[] args) {
-        int num = 12345; // Example input
+        int num = 987654321; // Example input
         System.out.println("Number of digits in " + num + " is: " + countDigits(num));
     }
 }

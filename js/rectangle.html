@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw a Rectangle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        canvas {
+            border: 1px solid #000;
+            margin-top: 20px;
+        }
+
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Draw a Rectangle</h1>
+    <label for="width">Width:</label>
+    <input type="number" id="width" placeholder="Enter width">
+    <label for="height">Height:</label>
+    <input type="number" id="height" placeholder="Enter height">
+    <button onclick="drawRectangle()">Draw</button>
+    <canvas id="rectangleCanvas" width="500" height="500"></canvas>
+
+    <script>
+        
+        function drawRectangle() {
+    const widthInput = document.getElementById('width').value;
+    const heightInput = document.getElementById('height').value;
+
+    const width = parseInt(widthInput);
+    const height = parseInt(heightInput);
+
+    if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+        alert('Please enter valid positive numbers for width and height.');
+        return;
+    }
+
+    const canvas = document.getElementById('rectangleCanvas');
+    const context = canvas.getContext('2d');
+
+    // Clear previous drawings
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Center the rectangle on the canvas
+    const x = (canvas.width - width) / 2;
+    const y = (canvas.height - height) / 2;
+
+    // Draw the rectangle
+    context.fillStyle = '#3498db'; // Set rectangle color
+    context.fillRect(x, y, width, height);
+}
+
+    </script>
+</body>
+
+</html>

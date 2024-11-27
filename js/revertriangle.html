@@ -1,0 +1,59 @@
+<!-- 
+* * * * *
+* * * *
+* * *
+* *
+* -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Pattern</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+        }
+        .pattern {
+            white-space: pre-line;
+            font-size: 18px;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Colorful Star Pattern Generator</h1>
+    <label for="rows">Enter number of rows:</label>
+    <input type="number" id="rows" min="1" max="20" placeholder="Enter rows">
+    <button onclick="generatePattern()">Generate Pattern</button>
+    <div class="pattern" id="pattern"></div>
+
+    <script>
+        function generatePattern(){
+            const rows = document.getElementById('rows').value;
+            const patternContainer = document.getElementById('pattern');
+            if(!rows || rows <= 0){
+                alert("Please enter a valid number of rows.");
+                return;
+            }
+            let patternHTMl = '';
+            for(let i = 1; i <=rows; i++){
+                let start = '';
+                for(let j = 1; j <rows; j++){
+                    start += '*';
+                }
+                patternHTML += stars + '<br>';
+            }
+            patternContainer.innerHTML = patternHTML;
+        }
+    </script>
+</body>
+</html>

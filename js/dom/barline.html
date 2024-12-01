@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Line Bar Chart</title>
+    <style>
+        .chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 10px;
+        }
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .line {
+            width: 100%;
+            height: 10px;
+            margin: 2px 0;
+        }
+        .base {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .label {
+            margin-top: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Colorful Vertical Line Bar Chart</h1>
+    <div class="chart" id="chart"></div>
+    <div class="base" id="base"></div>
+    <div class="labels" id="labels"></div>
+
+    <script >
+        // Bar heights array
+const bars = [3, 1, 4, 2, 5];
+
+// Colors for the lines
+const colors = ["red", "green", "blue", "yellow", "orange", "purple", "cyan"];
+
+// Find the maximum height
+const maxHeight = Math.max(...bars);
+
+// Select chart container
+const chartContainer = document.getElementById("chart");
+const baseContainer = document.getElementById("base");
+const labelsContainer = document.getElementById("labels");
+
+// Generate bars
+bars.forEach((height, index) => {
+    // Create a bar container
+    const barDiv = document.createElement("div");
+    barDiv.classList.add("bar");
+    barDiv.style.width = "40px";
+
+    // Add colorful lines to the bar
+    for (let i = 0; i < height; i++) {
+        const lineDiv = document.createElement("div");
+        lineDiv.classList.add("line");
+        lineDiv.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        barDiv.prepend(lineDiv); // Add lines from the bottom upwards
+    }
+
+    // Add the bar to the chart container
+    chartContainer.appendChild(barDiv);
+});
+
+// Add the base
+bars.forEach(() => {
+    const baseSegment = document.createElement("div");
+    baseSegment.textContent = "---";
+    baseSegment.style.width = "40px";
+    baseSegment.style.textAlign = "center";
+    baseContainer.appendChild(baseSegment);
+});
+
+// Add the labels
+bars.forEach((label) => {
+    const labelDiv = document.createElement("div");
+    labelDiv.classList.add("label");
+    labelDiv.textContent = label;
+    labelDiv.style.width = "40px";
+    labelsContainer.appendChild(labelDiv);
+});
+
+    </script>
+</body>
+</html>

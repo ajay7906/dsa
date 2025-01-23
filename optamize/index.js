@@ -11,7 +11,7 @@ function slowRoute(req, res) {
 }
 
 function fastRoute(req, res) {
-  res.send('Success');
+  res.send('Success'); 
 }
 
 function loop() {

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Debounced Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        #search-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #results {
+            border: 1px solid #eee;
+            padding: 10px;
+            min-height: 200px;
+        }
+        .search-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Search</h1>
+    <input type="text" id="search-input" placeholder="Search products...">
+    <div id="results"></div>
+
+    <script>
+        // Mock product database
+        const products = [
+            { id: 1, name: 'Laptop Pro', category: 'Electronics' },
+            { id: 2, name: 'Smartphone X', category: 'Electronics' },
+            { id: 3, name: 'Wireless Headphones', category: 'Electronics' },
+            { id: 4, name: 'Mechanical Keyboard', category: 'Accessories' },
+            { id: 5, name: 'Gaming Mouse', category: 'Accessories' }
+        ];
+
+        // Debounce function
+        function debounce(func, delay) {
+            let timeoutId;
+            return function (...args) {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+
+        // Search functionality
+        function searchProducts(query) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (!query) return;
+
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase())
+            );
+
+            if (filteredProducts.length === 0) {
+                resultsContainer.innerHTML = '<p>No products found</p>';
+                return;
+            }
+
+            filteredProducts.forEach(product => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('search-item');
+                resultItem.textContent = `${product.name} (${product.category})`;
+                resultsContainer.appendChild(resultItem);
+            });
+        }
+
+        // Debounced search
+        const debouncedSearch = debounce(searchProducts, 300);
+
+        // Event listener
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            debouncedSearch(e.target.value);
+        });
+    </script>
+</body>
+</html>

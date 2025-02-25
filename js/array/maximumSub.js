@@ -36,8 +36,8 @@ function Queue(size  = null) {
     }
 
     return {
-        pop,
-        push,
+        pop, // O(n)
+        push, // 1
         size: queueSize,
         isEmpty,
         peek

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    <script>
+        // Node class represents each element in the linked list
+        class Node {
+            constructor(data) {
+                this.data = data;  // Data of the node
+                this.next = null;   // Points to the next node (null initially)
+            }
+        }
+
+        // LinkedList class manages the linked list operations
+        class LinkedList {
+            constructor() {
+                this.head = null;  // Points to the first node in the list
+            }
+            append(data) {
+                const newNode = new Node(data);
+                if (this.head === null) {
+                    this.head = newNode;
+                    return;
+                }
+                let current = this.head;
+                while (current.next !== null){
+                    current = current.next;
+                }
+
+                current.next = newNode;
+            }
+        }
+
+        // Example usage: Create an empty linked list
+        const list = new LinkedList();
+        list.append(15);
+        list.append(10);
+        list.append(5);
+        list.append(20);
+        list.append(25);
+        list.append(30);
+        list.append(35);
+        list.append(40);
+        list.append(45);
+        list.append(50);
+        console.log(list);
+
+    </script>
+</body>
+
+</html>

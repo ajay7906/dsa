@@ -8,5 +8,23 @@ function nextGreaterElement(arr){
         }
         stack.push(arr[i]);
     }
+   
+return stack;
 }
-nextGreaterElement([4,5,2,10,8]); // 4 -> 5, 5 -> 10, 2 -> 10, 10 -> 8
+const printData = nextGreaterElement([4,5,2,10,8]); // 4 -> 5, 5 -> 10, 2 -> 10, 10 -> 8
+console.log(printData); // [ 8 ]  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -33,12 +33,3 @@ const n = 4;
 const result = findCelebrity(n, matrix); 
 
 
-
-const matrix = [
-    [0, 0, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 1, 0]
-];  
-const n = 4;
-const result = findCelebrity(n, matrix);

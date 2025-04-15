@@ -153,3 +153,42 @@ console.log(
   console.log(
     checkPalidRome()
   );
+
+
+  // Remove Duplicates from a String
+// Input: "aabbcc" → Output: "abc"
+
+// function removDuplicates(str){
+//   let result = '';
+//   for (let i = 0;  i < str.length; i++){
+//     if(!result.includes(str[i])){
+//       result += str[i];
+//     }
+       
+
+//   }
+//   return result.toUpperCase();
+// }
+// console.log(
+//   removDuplicates(a));
+
+
+
+// function removeDuplicateWithout(str){
+//   let newStr = str.split('');
+//   for(let i = 0; i < str.length; i++){
+//     if(!newStr.includes(str[i])){
+//       newStr.push(str[i]);
+//     }
+//   }
+
+// }
+
+
+
+// Find the Most Frequent Character
+// Input: "abbcccddd" → Output: 'd'
+
+// function mostFrequestChar(){
+  
+// }
